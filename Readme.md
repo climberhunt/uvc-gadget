@@ -1,3 +1,12 @@
+WARNING: This repository is for archival purposes only. Please use the repositories in the paragraph below.
+===
+
+Please use https://github.com/peterbay/uvc-gadget for your upstream instead.
+Aso, there's SD card images available at https://github.com/showmewebcam/showmewebcam which includes a distro based on build root that boots in about 10 seconds. It uses the above upsteam, and it a really quick way to get up and going.
+
+Everything below this line is outdated.
+
+
 ## uvc-gadget
 
 **Upstream project [uvc-gadget](http://git.ideasonboard.org/uvc-gadget.git) has been updated and continuous maintenance**
