@@ -2306,11 +2306,14 @@ int main(int argc, char *argv[])
         if (!dummy_data_gen_mode && !mjpeg_image)
             FD_SET(vdev->v4l2_fd, &fdsv);
 
-        /* Timeout. */
-        tv.tv_sec = 2;
-        tv.tv_usec = 0;
-
         if (!dummy_data_gen_mode && !mjpeg_image) {
+            /* yield CPU to other processes and avoid spinlock when camera is not being used */
+            tv.tv_sec = 0;
+            tv.tv_usec = 1 * 1000000;
+            nanosleep(&tv, &tv); 
+            /* Timeout. */
+            tv.tv_sec = 1;
+            tv.tv_usec = 0;
             nfds = max(vdev->v4l2_fd, udev->uvc_fd);
             ret = select(nfds + 1, &fdsv, &dfds, &efds, &tv);
         } else {
